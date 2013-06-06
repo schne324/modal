@@ -10,13 +10,19 @@
 ## API
 ###Options:
 @param {string}
- 	-[id]: Selector for the desired modal ID (default: 'modal')
- 	-[header]: Desired content for the modal header (default: 'Prompt Box!')
- 	-[close]: Desired content for the close button (default: 'X')
- 	-[modalContent]: Desired modal content (default: 'This is just like a prompt only it\'s not from the 70s')
- 	-[inputPlaceholder]: The desired placeholder in the input (default: 'Enter a value...')
- 	-[confirm]: Desired content for the submit/confirm button (default: 'Submit')
- 	-[cancel]: Desired content for the cancel/dismiss button (default: 'Cancel')
+ 	[id]: Selector for the desired modal ID (default: 'modal')
+
+ 	[header]: Desired content for the modal header (default: 'Prompt Box!')
+
+ 	[close]: Desired content for the close button (default: 'X')
+
+ 	[modalContent]: Desired modal content (default: 'This is just like a prompt only it\'s not from the 70s')
+
+ 	[inputPlaceholder]: The desired placeholder in the input (default: 'Enter a value...')
+
+ 	[confirm]: Desired content for the submit/confirm button (default: 'Submit')
+
+ 	[cancel]: Desired content for the cancel/dismiss button (default: 'Cancel')
 
 ## Example Usage
 ```javascript
