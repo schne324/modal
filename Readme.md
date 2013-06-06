@@ -8,7 +8,8 @@
     $ component install schne324/modal
 
 ## API
-  @param {string} ###Options:
+  ###Options:
+  @param {string}
    	[id]: Selector for the desired modal ID (default: 'modal')
    	[header]: Desired content for the modal header (default: 'Prompt Box!')
    	[close]: Desired content for the close button (default: 'X')
