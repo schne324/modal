@@ -10,6 +10,7 @@
 ## API
 ###Options:
 @param {string}
+
  	[id]: Selector for the desired modal ID (default: 'modal')
 
  	[header]: Desired content for the modal header (default: 'Prompt Box!')
