@@ -1,0 +1,24 @@
+{
+  "name": "modal",
+  "repo": "schne324/modal",
+  "description": "modal",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/event": "*",
+    "component/query": "*",
+    "component/classes": "*",
+    "segmentio/extend": "*",
+    "component/emitter": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js",
+    "template.js"
+  ],
+  "styles": [
+    "modal.css"
+  ]
+}

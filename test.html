@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="build/build.css">
+</head>
+<body>
+
+<button id="modal-trigger" type="button">Fire modal</button>
+
+<script src="build/build.js"></script>
+
+<script>
+	var prompter = require('modal');
+
+	var modal = prompter('#modal-trigger', {
+		modalContent: 'I am the egg man, I am the catephant',
+		confirm: 'Okay',
+		cancel: 'Nokay'
+	});
+
+	modal.on('confirm', function (res) {
+		alert('you hit confirm and said ' + res);
+	});
+</script>
+
+</body>
+</html>

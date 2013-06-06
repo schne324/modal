@@ -1,0 +1,48 @@
+.modular {
+	background-color:#fff;
+	font-family:Lucida Sans Unicode;
+	border:10px solid #ccc;
+	width:400px;
+	border-radius:20px;
+	display:none;
+	-moz-box-shadow: 0 0 25px #000;
+	-webkit-box-shadow: 0 0 25px #000;
+	box-shadow: 0 0 25px #000;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#444444')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#444444');
+}
+
+.modular h2 {
+	font-size:35px;
+	display:inline;
+}
+.modular .close {
+	float:right;
+	font-size:16px;
+}
+#modal-header {
+	background-color:#ccc;
+	text-align:center;
+}
+#modal-body {
+	text-align: center;
+	margin:0 auto;
+}
+#typewriter {
+	margin-bottom:10px;
+    padding: 5px;
+    border: 5px solid #ccc;
+    border-radius:5px;
+    font-size:15px;
+    -moz-box-shadow: 0 0 10px #000;
+	-webkit-box-shadow: 0 0 10px #000;
+	box-shadow: 0 0 10px #000;
+}
+#modal-body button {
+	font-weight: bold;
+	font-size:15px;
+	padding:5px;
+}
+.modular.opened {
+	display:block !important;
+}
