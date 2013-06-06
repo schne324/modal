@@ -1,7 +1,6 @@
-
 # modal
 
-  modal
+  Very basic modal used to replace prompt.  No animation, no jQuery...
 
 ## Installation
 
