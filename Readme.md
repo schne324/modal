@@ -27,6 +27,7 @@
 ## Example Usage
 ```javascript
 var prompter = require('modal');
+  //////////////OPTIONS/////////////////
   //note: not all options must be specified, there are fall-back defualts
   var modal = prompter('#modal-trigger', {
     id: 'my-modal',
