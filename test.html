@@ -23,6 +23,18 @@
 		insertInto: i
 	});
 
+	modal.on('hide', function () {
+		console.log('hide')
+	})
+
+	modal.on('cancel', function () {
+		console.log('cancel')
+	})
+
+	modal.on('closed', function () {
+		console.log('closed')
+	})
+
 	modal.on('confirm', function (res) {
 		alert('you hit confirm and said ' + res);
 	});
