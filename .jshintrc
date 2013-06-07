@@ -1,0 +1,10 @@
+{
+  "browser": true,
+  "globals": {
+    "require": false,
+    "exports": true,
+    "module": false
+  },
+  "globalstrict": true,
+  "laxbreak": true
+}
