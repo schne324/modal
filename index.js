@@ -23,7 +23,8 @@ module.exports = function (trigger, options) {
 		modalContent: 'This is just like a prompt only it\'s not from the 70s',
 		inputPlaceholder: 'Enter a value...',
 		confirm: 'Submit',
-		cancel: 'Cancel'
+		cancel: 'Cancel',
+		insertInto: document.body
 	}, options);
 
 
@@ -39,7 +40,7 @@ module.exports = function (trigger, options) {
 
 	var wrapper = document.createElement('div');
 	wrapper.innerHTML = html;
-	document.body.appendChild(wrapper);
+	options.insertInto.appendChild(wrapper);
 
 
 	var modal = query('#' + options.id),

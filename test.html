@@ -7,15 +7,20 @@
 
 <button id="modal-trigger" type="button">Fire modal</button>
 
+<div id="insert-into-me"></div>
+
 <script src="build/build.js"></script>
 
 <script>
 	var prompter = require('modal');
 
+	var i = document.getElementById('insert-into-me')
+
 	var modal = prompter('#modal-trigger', {
 		modalContent: 'I am the egg man, I am the catephant',
 		confirm: 'Okay',
-		cancel: 'Nokay'
+		cancel: 'Nokay',
+		insertInto: i
 	});
 
 	modal.on('confirm', function (res) {
