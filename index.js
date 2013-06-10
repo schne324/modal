@@ -8,9 +8,18 @@ var events = require('event'),
 	rndid = require('rndid'),
 	template = require('./template');
 
+/**
+ * Build our options by merging defaults and handling
+ * selectors
+ *
+ * @api private
+ * @param {Object} [options]
+ * @return {Object}
+ */
 function opts(options) {
-	var o = extend({}, Modal.defaults, options);
+	var o = extend({}, Modal.defaults, options || {});
 
+	// insertInto selector
 	if (typeof o.insertInto === 'string') {
 		o.insertInto = query(o.insertInto);
 	}
@@ -21,6 +30,32 @@ function opts(options) {
 	}
 
 	return o;
+}
+
+/**
+ * Generate the `html` for a `Modal` by merging the
+ * given `options` with the `template`
+ *
+ * @api private
+ * @param {Object} options
+ * @return {String}
+ */
+function html(options) {
+	return template
+		.replace(/\{\{id\}\}/g, options.id)
+
+		// content
+		.replace(/\{\{header\}\}/g, options.header)
+		.replace(/\{\{modalContent\}\}/g, options.modalContent)
+
+		// buttons
+		.replace(/\{\{close\}\}/g, options.close)
+		.replace(/\{\{confirm\}\}/g, options.confirm)
+		.replace(/\{\{cancel\}\}/g, options.cancel)
+
+		// input stuff
+		.replace(/\{\{inputPlaceholder\}\}/g, options.inputPlaceholder)
+		.replace(/\{\{inputId\}\}/g, options.inputId);
 }
 
 var Modal = module.exports = function (trigger, options) {
@@ -42,22 +77,9 @@ var Modal = module.exports = function (trigger, options) {
 
 	// create our parent element
 	this.wrapper = document.createElement('div');
+
 	// add markup to the DOM
-	this.wrapper.innerHTML = template
-		.replace(/\{\{id\}\}/g, this.options.id)
-
-		// content
-		.replace(/\{\{header\}\}/g, this.options.header)
-		.replace(/\{\{modalContent\}\}/g, this.options.modalContent)
-
-		// buttons
-		.replace(/\{\{close\}\}/g, this.options.close)
-		.replace(/\{\{confirm\}\}/g, this.options.confirm)
-		.replace(/\{\{cancel\}\}/g, this.options.cancel)
-
-		// input stuff
-		.replace(/\{\{inputPlaceholder\}\}/g, this.options.inputPlaceholder)
-		.replace(/\{\{inputId\}\}/g, this.options.inputId);
+	this.wrapper.innerHTML = html(this.options);
 
 	this.options.insertInto.appendChild(this.wrapper);
 
@@ -96,14 +118,16 @@ Modal.prototype._bind = function () {
 	// the confirm button
 	this._onconfirm = events.bind(confirm, 'click', function () {
 		var val = input.value;
+
 		if (!val) {
 			// if there's no value, just re-focus the input and return
 			return input.focus();
 		}
 
-		input.value = '';
 		self.emit('confirm', val);
 		self.hide();
+
+		input.value = '';
 	});
 
 	// cancel button
@@ -119,7 +143,7 @@ Modal.prototype._bind = function () {
 
 		// ESCAPE
 		if (which === 27) {
-			self._onclose();
+			close.click();
 		// TAB
 		} else if (which === 9) {
 			// SHIFT+TAB
@@ -141,7 +165,8 @@ Modal.prototype._bind = function () {
 		// ENTER
 		} else if (which === 13) {
 			if (target === input) {
-				self._onconfirm();
+				keyboardEvent.preventDefault();
+				confirm.click();
 			}
 		}
 	});
@@ -194,12 +219,12 @@ Modal.prototype.show = function () {
  * @return {Modal}
  */
 Modal.prototype.hide = function () {
+	// remove all previous event registers
+	this._unbind();
+
 	classes(this.modal).remove('opened');
 
 	this.trigger.focus();
-
-	// remove all previous event registers
-	this._unbind();
 
 	return this.emit('hide', this);
 };
