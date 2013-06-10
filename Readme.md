@@ -23,6 +23,8 @@
  	[confirm]: Desired content for the submit/confirm button (default: 'Submit')
 
  	[cancel]: Desired content for the cancel/dismiss button (default: 'Cancel')
+  
+  [insertInto]: @param {element} Element in which the modal is inserted (default: document.body)
 
 ## Example Usage
 ```javascript
