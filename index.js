@@ -44,14 +44,20 @@ var Modal = module.exports = function (trigger, options) {
 	this.wrapper = document.createElement('div');
 	// add markup to the DOM
 	this.wrapper.innerHTML = template
-		.replace(/\{\{id\}\}/, this.options.id)
-		.replace(/\{\{header\}\}/, this.options.header)
-		.replace(/\{\{close\}\}/, this.options.close)
-		.replace(/\{\{inputPlaceholder\}\}/, this.options.inputPlaceholder)
-		.replace(/\{\{modalContent\}\}/, this.options.modalContent)
-		.replace(/\{\{confirm\}\}/, this.options.confirm)
-		.replace(/\{\{cancel\}\}/, this.options.cancel)
-		.replace(/\{\{inputId\}\}/, this.options.inputId);
+		.replace(/\{\{id\}\}/g, this.options.id)
+
+		// content
+		.replace(/\{\{header\}\}/g, this.options.header)
+		.replace(/\{\{modalContent\}\}/g, this.options.modalContent)
+
+		// buttons
+		.replace(/\{\{close\}\}/g, this.options.close)
+		.replace(/\{\{confirm\}\}/g, this.options.confirm)
+		.replace(/\{\{cancel\}\}/g, this.options.cancel)
+
+		// input stuff
+		.replace(/\{\{inputPlaceholder\}\}/g, this.options.inputPlaceholder)
+		.replace(/\{\{inputId\}\}/g, this.options.inputId);
 
 	this.options.insertInto.appendChild(this.wrapper);
 
@@ -78,6 +84,9 @@ Modal.prototype._bind = function () {
 		confirm = this._confirm = query('.confirm', this.modal),
 		input = this._input = query('input', this.modal);
 
+	// don't duplicate event listeners; clobber the old ones
+	this._unbind();
+
 	// the close button
 	this._onclose = events.bind(close, 'click', function () {
 		self.emit('closed', self);
@@ -92,6 +101,7 @@ Modal.prototype._bind = function () {
 			return input.focus();
 		}
 
+		input.value = '';
 		self.emit('confirm', val);
 		self.hide();
 	});
@@ -140,6 +150,31 @@ Modal.prototype._bind = function () {
 };
 
 /**
+ * Remove all DOM event handlers on the `Modal`.
+ *
+ * @api private
+ * @return {Modal}
+ */
+Modal.prototype._unbind = function () {
+	var self = this;
+
+	function rm(element, type, fn) {
+		if (self[element] && self[fn]) {
+			events.unbind(self[element], type, self[fn]);
+			self[fn] = null;
+		}
+	}
+
+	rm('_close', 'click', '_onclose');
+	rm('_confirm', 'click', '_onconfirm');
+	rm('_cancel', 'click', '_oncancel');
+	rm('modal', 'keydown', '_onkeydown');
+
+	return this;
+};
+
+
+/**
  * Show the modal
  *
  * @api public
@@ -164,10 +199,7 @@ Modal.prototype.hide = function () {
 	this.trigger.focus();
 
 	// remove all previous event registers
-	events.unbind(this._close, 'click', this._onclose);
-	events.unbind(this._confirm, 'click', this._onconfirm);
-	events.unbind(this._cancel, 'click', this._oncancel);
-	events.unbind(this.modal, 'keydown', this._onkeydown);
+	this._unbind();
 
 	return this.emit('hide', this);
 };

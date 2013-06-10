@@ -1,3 +1,9 @@
+# Unreleased (`head`)
+
+- Replaced `<p />` with a `<label />` (WCAG)
+- Fixed duplicate DOM event listeners
+- Emptying the `<input />`'s value on `confirm`
+
 # 0.1.2
 
 - Fix duplicate IDs 

@@ -1,10 +1,10 @@
 .modular {
-	background-color:#fff;
-	font-family:Lucida Sans Unicode;
-	border:10px solid #ccc;
-	width:400px;
-	border-radius:20px;
-	display:none;
+	background-color: #fff;
+	font-family: Lucida Sans Unicode;
+	border: 10px solid #ccc;
+	width: 400px;
+	border-radius: 20px;
+	display: none;
 	-moz-box-shadow: 0 0 25px #000;
 	-webkit-box-shadow: 0 0 25px #000;
 	box-shadow: 0 0 25px #000;
@@ -13,31 +13,31 @@
 }
 
 .modular h2 {
-	font-size:35px;
-	display:inline;
+	font-size: 35px;
+	display: inline;
 }
 
 .modular .close {
-	float:right;
-	font-size:16px;
+	float: right;
+	font-size: 16px;
 }
 
 .modular .modal-header {
-	background-color:#ccc;
-	text-align:center;
+	background-color: #ccc;
+	text-align: center;
 }
 
 .modular .modal-body {
 	text-align: center;
-	margin:0 auto;
+	margin: 0 auto;
 }
 
 .modular .modal-input {
-	margin-bottom:10px;
+	margin-bottom: 10px;
     padding: 5px;
     border: 5px solid #ccc;
-    border-radius:5px;
-    font-size:15px;
+    border-radius: 5px;
+    font-size: 15px;
     -moz-box-shadow: 0 0 10px #000;
 	-webkit-box-shadow: 0 0 10px #000;
 	box-shadow: 0 0 10px #000;
@@ -45,10 +45,15 @@
 
 .modular .modal-body button {
 	font-weight: bold;
-	font-size:15px;
-	padding:5px;
+	font-size: 15px;
+	padding: 5px;
 }
 
 .modular.opened {
-	display:block !important;
+	display: block !important;
+}
+
+.modular label {
+	display: block;
+	margin-bottom: 12px;
 }
