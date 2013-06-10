@@ -14,13 +14,11 @@
 <script>
 	var prompter = require('modal');
 
-	var i = document.getElementById('insert-into-me')
-
 	var modal = prompter('#modal-trigger', {
 		modalContent: 'I am the egg man, I am the catephant',
 		confirm: 'Okay',
 		cancel: 'Nokay',
-		insertInto: i
+		insertInto: '#insert-into-me'
 	});
 
 	modal.on('hide', function () {
