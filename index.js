@@ -23,6 +23,11 @@ var Modal = module.exports = function (trigger, options) {
 
 	this.options = extend({}, Modal.defaults, options);
 
+	// support a selector for "insertInto"
+	this.options.insertInto = typeof this.options.insertInto === 'string'
+		? query(this.options.insertInto)
+		: this.options.insertInto;
+
 	// create our parent element
 	this.wrapper = document.createElement('div');
 	// add markup to the DOM
@@ -123,9 +128,6 @@ Modal.prototype.show = function () {
 
 Modal.prototype.hide = function () {
 	classes(this.modal).remove('opened');
-
-console.log('trigger', this.trigger)
-
 
 	this.trigger.focus();
 
