@@ -2,7 +2,7 @@
   "name": "modal",
   "repo": "schne324/modal",
   "description": "modal",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [],
   "dependencies": {
     "component/event": "*",

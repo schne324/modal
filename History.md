@@ -1,3 +1,7 @@
+# 0.1.2
+
+- Fix duplicate IDs 
+
 # 0.1.1
 
 - `options.insertInto` may now be an HTMLElement or a selector
