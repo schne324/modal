@@ -9,7 +9,8 @@
     "component/query": "*",
     "component/classes": "*",
     "segmentio/extend": "*",
-    "component/emitter": "*"
+    "component/emitter": "*",
+    "stephenmathieson/rndid": "*"
   },
   "development": {},
   "license": "MIT",

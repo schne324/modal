@@ -5,7 +5,10 @@
 </head>
 <body>
 
-<button id="modal-trigger" type="button">Fire modal</button>
+<button id="modal-trigger-1" type="button">Fire modal 1</button>
+
+
+<button id="modal-trigger-2" type="button">Fire modal 2</button>
 
 <div id="insert-into-me"></div>
 
@@ -14,11 +17,12 @@
 <script>
 	var prompter = require('modal');
 
-	var modal = prompter('#modal-trigger', {
+	var modal = prompter('#modal-trigger-1', {
 		modalContent: 'I am the egg man, I am the catephant',
 		confirm: 'Okay',
 		cancel: 'Nokay',
-		insertInto: '#insert-into-me'
+		insertInto: '#insert-into-me',
+		id: 'modal1'
 	});
 
 	modal.on('hide', function () {
@@ -36,6 +40,19 @@
 	modal.on('confirm', function (res) {
 		alert('you hit confirm and said ' + res);
 	});
+
+	// second modal
+	new prompter('#modal-trigger-2', {
+			modalContent: 'modal 2',
+			insertInto: '#insert-into-me',
+			inputId: 'inputnumber2',
+			id: 'modal2'
+		})
+		.on('confirm', function (res) {
+			alert(res)
+		})
+
+
 </script>
 
 </body>

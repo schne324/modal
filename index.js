@@ -5,7 +5,23 @@ var events = require('event'),
 	classes = require('classes'),
 	extend = require('extend'),
 	emitter = require('emitter'),
+	rndid = require('rndid'),
 	template = require('./template');
+
+function opts(options) {
+	var o = extend({}, Modal.defaults, options);
+
+	if (typeof o.insertInto === 'string') {
+		o.insertInto = query(o.insertInto);
+	}
+
+	// blank?  make it random
+	if (!o.inputId) {
+		o.inputId = rndid();
+	}
+
+	return o;
+}
 
 var Modal = module.exports = function (trigger, options) {
 	// invocation without `new` for back-compat
@@ -21,12 +37,8 @@ var Modal = module.exports = function (trigger, options) {
 		? query(trigger)
 		: trigger;
 
-	this.options = extend({}, Modal.defaults, options);
-
-	// support a selector for "insertInto"
-	this.options.insertInto = typeof this.options.insertInto === 'string'
-		? query(this.options.insertInto)
-		: this.options.insertInto;
+	// generate options w/ defaults
+	this.options = opts(options);
 
 	// create our parent element
 	this.wrapper = document.createElement('div');
@@ -38,7 +50,8 @@ var Modal = module.exports = function (trigger, options) {
 		.replace(/\{\{inputPlaceholder\}\}/, this.options.inputPlaceholder)
 		.replace(/\{\{modalContent\}\}/, this.options.modalContent)
 		.replace(/\{\{confirm\}\}/, this.options.confirm)
-		.replace(/\{\{cancel\}\}/, this.options.cancel);
+		.replace(/\{\{cancel\}\}/, this.options.cancel)
+		.replace(/\{\{inputId\}\}/, this.options.inputId);
 
 	this.options.insertInto.appendChild(this.wrapper);
 
@@ -52,6 +65,12 @@ var Modal = module.exports = function (trigger, options) {
 	this._bind();
 };
 
+/**
+ * Bind all DOM event listeners for the `Modal`
+ *
+ * @api private
+ * @return {Modal}
+ */
 Modal.prototype._bind = function () {
 	var self = this,
 		cancel = this._cancel = query('.cancel', this.modal),
@@ -120,12 +139,25 @@ Modal.prototype._bind = function () {
 	return this;
 };
 
+/**
+ * Show the modal
+ *
+ * @api public
+ * @return {Modal}
+ */
 Modal.prototype.show = function () {
 	classes(this.modal).add('opened');
 	query('input', this.modal).focus();
 	return this.emit('show', this);
 };
 
+
+/**
+ * Hide the modal
+ *
+ * @api public
+ * @return {Modal}
+ */
 Modal.prototype.hide = function () {
 	classes(this.modal).remove('opened');
 

@@ -16,19 +16,23 @@
 	font-size:35px;
 	display:inline;
 }
+
 .modular .close {
 	float:right;
 	font-size:16px;
 }
-#modal-header {
+
+.modular .modal-header {
 	background-color:#ccc;
 	text-align:center;
 }
-#modal-body {
+
+.modular .modal-body {
 	text-align: center;
 	margin:0 auto;
 }
-#typewriter {
+
+.modular .modal-input {
 	margin-bottom:10px;
     padding: 5px;
     border: 5px solid #ccc;
@@ -38,11 +42,13 @@
 	-webkit-box-shadow: 0 0 10px #000;
 	box-shadow: 0 0 10px #000;
 }
-#modal-body button {
+
+.modular .modal-body button {
 	font-weight: bold;
 	font-size:15px;
 	padding:5px;
 }
+
 .modular.opened {
 	display:block !important;
 }
