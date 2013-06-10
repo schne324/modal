@@ -1,3 +1,8 @@
+# 0.1.1
+
+- `options.insertInto` may now be an HTMLElement or a selector
+- removed debugging `console.log`
+
 # 0.1.0
 
 - Added "closed", "show", and "hide" events
