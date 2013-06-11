@@ -28,7 +28,9 @@
 
     [cancel]: Desired content for the cancel/dismiss button (default: 'Cancel')
 
-    [insertInto]: @param {element} Element in which the modal is inserted (default: document.body)
+@param {element}
+    
+    [insertInto]: Element in which the modal is inserted (default: document.body)
 
 ## Example Usage
 
