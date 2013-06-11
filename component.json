@@ -5,7 +5,7 @@
   "version": "0.1.2",
   "keywords": [],
   "dependencies": {
-    "component/event": "*",
+    "stephenmathieson/event": "*",
     "component/query": "*",
     "component/classes": "*",
     "segmentio/extend": "*",
