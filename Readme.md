@@ -7,26 +7,31 @@
     $ component install schne324/modal
 
 ## API
-###Options:
+
+### Options:
+
 @param {string}
 
- 	[id]: Selector for the desired modal ID (default: 'modal')
+    [id]: Selector for the desired modal ID (default: 'modal')
 
- 	[header]: Desired content for the modal header (default: 'Prompt Box!')
+    [header]: Desired content for the modal header (default: 'Prompt Box!')
 
- 	[close]: Desired content for the close button (default: 'X')
+    [close]: Desired content for the close button (default: 'X')
 
- 	[modalContent]: Desired modal content (default: 'This is just like a prompt only it\'s not from the 70s')
+    [ariaLabelClose]: Desired aria-label for the close button (default: 'close')
 
- 	[inputPlaceholder]: The desired placeholder in the input (default: 'Enter a value...')
+    [modalContent]: Desired modal content (default: 'This is just like a prompt only it\'s not from the 70s')
 
- 	[confirm]: Desired content for the submit/confirm button (default: 'Submit')
+    [inputPlaceholder]: The desired placeholder in the input (default: 'Enter a value...')
 
- 	[cancel]: Desired content for the cancel/dismiss button (default: 'Cancel')
-  
-  [insertInto]: @param {element} Element in which the modal is inserted (default: document.body)
+    [confirm]: Desired content for the submit/confirm button (default: 'Submit')
+
+    [cancel]: Desired content for the cancel/dismiss button (default: 'Cancel')
+
+    [insertInto]: @param {element} Element in which the modal is inserted (default: document.body)
 
 ## Example Usage
+
 ```javascript
 var prompter = require('modal');
   //////////////OPTIONS/////////////////
