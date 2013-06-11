@@ -50,6 +50,7 @@ function html(options) {
 
 		// buttons
 		.replace(/\{\{close\}\}/g, options.close)
+		.replace(/\{\{ariaLabelClose\}\}/g, options.ariaLabelClose)
 		.replace(/\{\{confirm\}\}/g, options.confirm)
 		.replace(/\{\{cancel\}\}/g, options.cancel)
 
@@ -234,6 +235,7 @@ Modal.defaults = {
 	id: 'modal',
 	header: 'Prompt Box!',
 	close: 'X',
+	ariaLabelClose: 'close',
 	modalContent: 'This is just like a prompt only it\'s not from the 70s',
 	inputPlaceholder: 'Enter a value...',
 	confirm: 'Submit',
